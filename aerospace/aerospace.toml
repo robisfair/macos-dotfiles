@@ -1,0 +1,151 @@
+# ~/.aerospace.toml
+config-version = 2
+start-at-login = false 
+
+# PERSISTENT WORKSPACES --> 1-6
+persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+
+# --- NATIVE HYPRLAND DWINDLE EXPERT ENGINE ---
+# Enforces the HyprSpace binary tree dwindle algorithm layout globally
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Ensures that new windows automatically spawn as dwindle splits on initialization
+after-startup-command = ['layout tiles']
+
+# --- MOUSE WARPING EVENT HANDLERS (Linux Cursor Wrapping) ---
+
+# 1. monitor focus --> warps mouse to window in focus (works across monitors)
+on-focus-changed = ['move-mouse window-lazy-center']
+
+[gaps]
+inner.horizontal = 8
+inner.vertical   = 8
+outer.left       = 8
+outer.bottom     = 8
+outer.top        = 8
+outer.right      = 8
+
+[mode.main.binding]
+# --- QUITTING APPLICATIONS (like my Omarchy Setup --> alt-w maps to cmd-q) ---
+ctrl-w = 'close --quit-if-last-window'
+
+# --- SPAWNING APPLICATIONS (The Linux Way) ---
+ctrl-cmd-b = "exec-and-forget open -n -a '/Applications/Google Chrome.app'"
+ctrl-enter = "exec-and-forget open -a /Applications/Ghostty.app"
+alt-shift-a = ["exec-and-forget open -a '/Applications/Claude.app'", 'workspace 5']
+ctrl-f = 'exec-and-forget ~/.config/hyprspace/open-finder.sh'
+ctrl-o = ["exec-and-forget open -a '/Applications/Obsidian.app'", 'workspace 4']
+
+# --- Chrome WebApps ---
+ctrl-alt-c = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/Google Calendar.app'", "workspace 2"]
+ctrl-alt-f = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/Front.app'"]
+ctrl-alt-t = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/GoogleTranslate.app'"]
+
+# --- CHAINED THICK-CLIENT APP LAUNCH + VIEWPORT FOLLOW ---
+ctrl-s = [
+    "exec-and-forget open -a /Applications/Slack.app", 
+    "workspace 3"
+]
+alt-shift-s = ["exec-and-forget open -a '/System/Applications/System Settings.app'"]
+ctrl-p = ["exec-and-forget open -a /Applications/Spotify.app", 'workspace 6']
+ctrl-alt-k = ["exec-and-forget open -a /Applications/Anki.app", 'workspace 5']
+
+# --- HYPRSPACE/HYPRLAND LAYOUT CONTROLS ---
+alt-v = 'layout tiles horizontal vertical' # Alternates layout grids manually
+alt-f = 'fullscreen'
+ctrl-space = 'layout floating tiling'
+
+# --- WINDOW FOCUS (Arrow Keys) ---
+ctrl-left  = 'focus left'
+ctrl-down  = 'focus down'
+ctrl-up    = 'focus up'
+ctrl-right = 'focus right'
+
+# --- WINDOW FOCUS (Vim Motions) ---
+ctrl-h = 'focus left'
+ctrl-j = 'focus down'
+ctrl-k = 'focus up'
+ctrl-l = 'focus right'
+
+# --- MOVING WINDOWS (Arrow Keys) ---
+cmd-ctrl-left  = 'move left'
+cmd-ctrl-down  = 'move down'
+cmd-ctrl-up    = 'move up'
+cmd-ctrl-right = 'move right'
+
+# --- INSTANT WORKSPACE SWITCHING ---
+ctrl-keypad1 = 'workspace 1'
+ctrl-keypad2 = 'workspace 2'
+ctrl-keypad3 = 'workspace 3'
+ctrl-keypad4 = 'workspace 4'
+ctrl-keypad5 = 'workspace 5' # laptop - Claude
+ctrl-keypad6 = 'workspace 6' # laptop spotify
+ctrl-keypad7 = 'workspace 7'
+ctrl-1 = 'workspace 1'
+ctrl-2 = 'workspace 2'
+ctrl-3 = 'workspace 3'
+ctrl-4 = 'workspace 4'
+ctrl-5 = 'workspace 5'
+ctrl-6 = 'workspace 6'
+ctrl-7 = 'workspace 7'
+
+ctrl-rightSquareBracket = 'workspace next --wrap-around'
+ctrl-leftSquareBracket = 'workspace prev --wrap-around'
+
+
+# --- MOVING WINDOWS TO WORKSPACES ---
+ctrl-cmd-keypad1 = 'move-node-to-workspace 1 --focus-follows-window'
+ctrl-cmd-keypad2 = 'move-node-to-workspace 2 --focus-follows-window'
+ctrl-cmd-keypad3 = 'move-node-to-workspace 3 --focus-follows-window'
+ctrl-cmd-keypad4 = 'move-node-to-workspace 4 --focus-follows-window'
+ctrl-cmd-keypad5 = 'move-node-to-workspace 5 --focus-follows-window'
+ctrl-cmd-keypad6 = 'move-node-to-workspace 6 --focus-follows-window'
+
+ctrl-cmd-1 = 'move-node-to-workspace 1 --focus-follows-window'
+ctrl-cmd-2 = 'move-node-to-workspace 2 --focus-follows-window'
+ctrl-cmd-3 = 'move-node-to-workspace 3 --focus-follows-window'
+ctrl-cmd-4 = 'move-node-to-workspace 4 --focus-follows-window'
+ctrl-cmd-5 = 'move-node-to-workspace 5 --focus-follows-window'
+ctrl-cmd-6 = 'move-node-to-workspace 6 --focus-follows-window'
+ctrl-cmd-7 = 'move-node-to-workspace 7 --focus-follows-window'
+
+# --- MONITOR FOCUS SWITCHING ---
+ctrl-shift-rightSquareBracket = "focus-monitor next"
+ctrl-shift-leftSquareBracket = "focus-monitor prev"
+alt-tab = 'workspace-back-and-forth'
+
+# --- HARDCODED WINDOW THROW MOVEMENTS ---
+# Pressing Shift + Ctrl + Alt + Open Bracket explicitly throws a window straight to your Dell 4K
+ctrl-alt-shift-left = ["move-node-to-monitor 'DELL S3425DW'", "focus-monitor 'DELL S3425DW'"]
+
+# Pressing Shift + Ctrl + Alt + Close Bracket explicitly throws a window straight to your Laptop screen
+ctrl-alt-shift-right = ["move-node-to-monitor 'Built-in Retina Display'", "focus-monitor 'Built-in Retina Display'"]
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+# throw into floating
+run = ['workspace 6', 'layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Finder'
+if.during-aerospace-startup = false
+run = 'layout tiling'
+
+
+# --- WORKSPACE TO MONITOR ASSIGNMENTS ---
+[workspace-to-monitor-force-assignment]
+"1" = 'main' # Dell Ultrawide
+"2" = 'main'
+"3" = 'main'
+"4" = 'main'
+"5" = '^built-in retina display$'
+"6" = 'built-in'
+
+########################################################
+## END OF FILE
+########################################################

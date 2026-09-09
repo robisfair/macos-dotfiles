@@ -1,0 +1,24 @@
+# ~/.config/alacritty/alacritty.toml
+
+[window]
+opacity = 0.80
+blur = true
+decorations = "Transparent"
+padding = { x = 14, y = 30 } # Keeps your safe margin below the traffic light buttons
+
+[font]
+size = 14.0
+normal = { family = "Menlo", style = "Italic" }
+
+[colors.primary]
+# Your custom sky blue base tint matching your background color
+background = '#4f99ef' 
+
+# Your vibrant pink code text color matching your foreground preference
+foreground = '#fbc0f1' 
+
+[colors.cursor]
+# Forces your blinking text cursor to match your pink aesthetic cleanly
+text = '#7dd1fe'
+cursor = '#fbc0f1'
+

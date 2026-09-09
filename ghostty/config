@@ -1,0 +1,29 @@
+font-family = Menlo
+font-size = 16
+# Uncomment for blur
+# background-blur-radius = 50
+# background-opacity = 0.90
+mouse-hide-while-typing = true
+window-decoration = false
+macos-option-as-alt = true
+########################
+# -- Themes -- 
+# Uncomment the desired theme and 
+# comment out the others
+# theme = Everforest Dark Hard
+# theme = Gruvbox Material Dark
+# theme = Gruvbox Dark
+# theme = Arthur
+# theme = Ryuuko
+# theme = traffic
+# theme = Terafox
+# theme = Sundried
+theme = Seafoam Pastel
+# theme = novmbr
+# theme = Catppuccin Frappe
+########################
+window-padding-x = 5
+window-padding-y = 5
+window-padding-balance = true
+macos-titlebar-style = hidden
+term = "xterm-256color"

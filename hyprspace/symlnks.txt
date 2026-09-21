@@ -1,0 +1,17 @@
+There are a few symlinks related to hyprspace in my dotfiles - and their organization goes as follows:
+
+- Everything points to ~/.config/aerospace/aerospace.toml
+    - I used: ln -sf ~/.config/aerospace/aerospace.toml <file to add link for>
+- The other 3 docs are all symlinked to that file:
+
+  1. ~/.aerospace.toml
+  2. ~/.hyprspace.toml
+  3. ~/.config/hyprspace/hyprspace.toml
+
+When I make changes to the config - I normally edit ~/.aerospace.toml and reload (hyprspace reload-config), but the changes can be made in any of the files.
+
+There's not necessary a super great design reason for this - a lot of my reasoning is that i started with aerospace and then wrapped hyprspace over my existing setup
+later on.
+
+I'd refer to the hyprpsace docs to see how what the config actually needs to run properly.
+HYPRSPACE does in fact need AEROSPACE installed to run - which is why I think I symlinked all the files.

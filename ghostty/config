@@ -28,5 +28,3 @@ window-padding-balance = true
 macos-titlebar-style = hidden
 term = "xterm-256color"
 
-# option as alt for tmux
-macos-option-as-alt = "Both"

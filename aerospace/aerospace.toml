@@ -3,7 +3,7 @@ config-version = 2
 start-at-login = false 
 
 # PERSISTENT WORKSPACES --> 1-6
-persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "G"]
 
 # --- NATIVE HYPRLAND DWINDLE EXPERT ENGINE ---
 # Enforces the HyprSpace binary tree dwindle algorithm layout globally
@@ -32,7 +32,7 @@ ctrl-w = 'close --quit-if-last-window'
 
 # --- SPAWNING APPLICATIONS (The Linux Way) ---
 ctrl-cmd-b = "exec-and-forget open -n -a '/Applications/Google Chrome.app'"
-ctrl-enter = "exec-and-forget open -a /Applications/Ghostty.app"
+ctrl-enter = "exec-and-forget open -n -a /Applications/Ghostty.app"
 alt-shift-a = ["exec-and-forget open -a '/Applications/Claude.app'", 'workspace 5']
 ctrl-f = 'exec-and-forget ~/.config/hyprspace/open-finder.sh'
 ctrl-o = ["exec-and-forget open -a '/Applications/Obsidian.app'", 'workspace 4']
@@ -40,7 +40,7 @@ ctrl-o = ["exec-and-forget open -a '/Applications/Obsidian.app'", 'workspace 4']
 # --- Chrome WebApps ---
 ctrl-alt-c = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/Google Calendar.app'", "workspace 2"]
 ctrl-alt-f = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/Front.app'"]
-ctrl-alt-t = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/GoogleTranslate.app'"]
+ctrl-alt-g = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/GoogleTranslate.app'"]
 
 # --- CHAINED THICK-CLIENT APP LAUNCH + VIEWPORT FOLLOW ---
 ctrl-s = [
@@ -82,6 +82,8 @@ ctrl-keypad4 = 'workspace 4'
 ctrl-keypad5 = 'workspace 5' # laptop - Claude
 ctrl-keypad6 = 'workspace 6' # laptop spotify
 ctrl-keypad7 = 'workspace 7'
+ctrl-g = 'workspace G' # mainly for Ghostty
+
 ctrl-1 = 'workspace 1'
 ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
@@ -90,9 +92,29 @@ ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
 
+# --- DYNAMIC TEMP WORKSPACE SPAWNING & CLEANUP ---
+ctrl-alt-t = 'exec-and-forget ~/.config/hyprspace/spawn-temp.sh'
+ctrl-alt-cmd-c = 'exec-and-forget ~/.config/hyprspace/clean-temp.sh'
+
+# --- MONITOR + WORKSPACE CYCLYING ---
 ctrl-rightSquareBracket = 'workspace next --wrap-around'
 ctrl-leftSquareBracket = 'workspace prev --wrap-around'
 
+ctrl-shift-rightSquareBracket = 'focus-monitor --wrap-around next'
+ctrl-shift-leftSquareBracket = 'focus-monitor --wrap-around prev'
+
+ctrl-cmd-rightSquareBracket = 'move-node-to-workspace next --wrap-around --focus-follows-window'
+ctrl-cmd-leftSquareBracket = 'move-node-to-workspace prev --wrap-around --focus-follows-window'
+
+# --- MOVING NODES BETWEEN MONITORS ---
+#
+# this is mainly for connecting to other monitors
+# also works well for main monitor
+# BUT main workstation is strictly defined by design
+# See monitor note at the bottom
+#
+ctrl-shift-cmd-rightSquareBracket = 'move-node-to-monitor next --wrap-around --focus-follows-window'
+ctrl-shift-cmd-leftSquareBracket = 'move-node-to-monitor prev --focus-follows-window'
 
 # --- MOVING WINDOWS TO WORKSPACES ---
 ctrl-cmd-keypad1 = 'move-node-to-workspace 1 --focus-follows-window'
@@ -101,6 +123,7 @@ ctrl-cmd-keypad3 = 'move-node-to-workspace 3 --focus-follows-window'
 ctrl-cmd-keypad4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-cmd-keypad5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-cmd-keypad6 = 'move-node-to-workspace 6 --focus-follows-window'
+ctrl-cmd-keypad7 = 'move-node-to-workspace 7 --focus-follows-window'
 
 ctrl-cmd-1 = 'move-node-to-workspace 1 --focus-follows-window'
 ctrl-cmd-2 = 'move-node-to-workspace 2 --focus-follows-window'
@@ -109,11 +132,10 @@ ctrl-cmd-4 = 'move-node-to-workspace 4 --focus-follows-window'
 ctrl-cmd-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-cmd-6 = 'move-node-to-workspace 6 --focus-follows-window'
 ctrl-cmd-7 = 'move-node-to-workspace 7 --focus-follows-window'
+ctrl-cmd-g = 'move-node-to-workspace G --focus-follows-window'
 
-# --- MONITOR FOCUS SWITCHING ---
-ctrl-shift-rightSquareBracket = "focus-monitor next"
-ctrl-shift-leftSquareBracket = "focus-monitor prev"
 alt-tab = 'workspace-back-and-forth'
+
 
 # --- HARDCODED WINDOW THROW MOVEMENTS ---
 # Pressing Shift + Ctrl + Alt + Open Bracket explicitly throws a window straight to your Dell 4K
@@ -145,6 +167,33 @@ run = 'layout tiling'
 "4" = 'main'
 "5" = '^built-in retina display$'
 "6" = 'built-in'
+"G" = 'main'
+
+
+###############################################################################################################################################################
+# --- MONITOR NOTES ---                                                                                                                                       #
+#                                                                                                                                                             #
+# This hyprspace.toml file is setup mainly for robert's primary desk setup at Keep Supply.                                                                    #
+# macOS auto-detects the exact monitor used as the main-monitor (changed in System Settings) and workspaces are restricted accordingly.                       #
+# By default - macOS assings uknown external displays with the 'External display' property - so a lot of the workspace assignments wouldn't work.             #
+#                                                                                                                                                             #
+# The setup defined above for workspaces and monitors is intended for a 2 display setup:                                                                      #
+#   - An external monitor as the main (Ultrawide / 4k or whatever) and the macbook built-in as the secondary                                                  #
+#   - However this setup also works fine when the macbook is closed and the only display is the external (reassigned to 'main')                               #
+#                                                                                                                                                             #
+# When casting or connecting to other displays, this functionality kind of falls out the window without Monitor cycling commands                              #
+# This is why the following sections exist:                                                                                                                   #
+#   - MONITOR + WORKSPACE CYCLYING                                                                                                                            #
+#   - MOVING NODES BETWEEN MONITORS                                                                                                                           #
+#                                                                                                                                                             #
+# This funcitonality allows for the macbooks to connect for any external monitor and still function with roughly the same exeperience as the main workstation.#
+#                                                                                                                                                             #
+# Since this is for my personal setup, I refuse to elaborate further, but if a stray reader sees this and has questions - i'm willing to answer               #
+#                                                                                                                                                             #
+#                                                                                                                                                             #
+#     - Robert                                                                                                                                                #
+###############################################################################################################################################################
+
 
 ########################################################
 ## END OF FILE

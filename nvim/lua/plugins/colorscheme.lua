@@ -26,9 +26,16 @@ return {
     end,
   },
   {
+    "ellisonleao/gruvbox.nvim",
+    priority = 997,
+  },
+  {
+    "shaunsingh/nord.nvim",
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "nord",
     },
   },
 }

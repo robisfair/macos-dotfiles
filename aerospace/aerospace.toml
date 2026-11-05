@@ -3,7 +3,7 @@ config-version = 2
 start-at-login = false 
 
 # PERSISTENT WORKSPACES --> 1-6
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "G"]
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "G", "Claude"]
 
 # --- NATIVE HYPRLAND DWINDLE EXPERT ENGINE ---
 # Enforces the HyprSpace binary tree dwindle algorithm layout globally
@@ -32,8 +32,8 @@ ctrl-w = 'close --quit-if-last-window'
 
 # --- SPAWNING APPLICATIONS (The Linux Way) ---
 ctrl-cmd-b = "exec-and-forget open -n -a '/Applications/Google Chrome.app'"
-ctrl-enter = "exec-and-forget open -n -a /Applications/Ghostty.app"
-alt-shift-a = ["exec-and-forget open -a '/Applications/Claude.app'", 'workspace 5']
+ctrl-enter = "exec-and-forget open -a /Applications/Ghostty.app"
+alt-shift-a = ["exec-and-forget open -a '/Applications/Claude.app'", 'workspace Claude']
 ctrl-f = 'exec-and-forget ~/.config/hyprspace/open-finder.sh'
 ctrl-o = ["exec-and-forget open -a '/Applications/Obsidian.app'", 'workspace 4']
 
@@ -91,6 +91,7 @@ ctrl-4 = 'workspace 4'
 ctrl-5 = 'workspace 5'
 ctrl-6 = 'workspace 6'
 ctrl-7 = 'workspace 7'
+ctrl-shift-c = 'workspace Claude'
 
 # --- DYNAMIC TEMP WORKSPACE SPAWNING & CLEANUP ---
 ctrl-alt-t = 'exec-and-forget ~/.config/hyprspace/spawn-temp.sh'
@@ -133,6 +134,7 @@ ctrl-cmd-5 = 'move-node-to-workspace 5 --focus-follows-window'
 ctrl-cmd-6 = 'move-node-to-workspace 6 --focus-follows-window'
 ctrl-cmd-7 = 'move-node-to-workspace 7 --focus-follows-window'
 ctrl-cmd-g = 'move-node-to-workspace G --focus-follows-window'
+ctrl-cmd-c = 'move-node-to-workspace Claude --focus-follows-window'
 
 alt-tab = 'workspace-back-and-forth'
 
@@ -168,7 +170,7 @@ run = 'layout tiling'
 "5" = '^built-in retina display$'
 "6" = 'built-in'
 "G" = 'main'
-
+"Claude" = 'main'
 
 ###############################################################################################################################################################
 # --- MONITOR NOTES ---                                                                                                                                       #

@@ -1,0 +1,13 @@
+# ~/.config/leaf/ryuuko.toml
+base = "ocean"                  # Inherit default dark styling components
+syntax = "base16-ocean.dark"    # Highlighting engine theme base
+
+[ui]
+content_bg = "#1F232A"          # Deep seafoam/teal-tinted dark background
+toc_accent = "#79E6C9"          # Soft mint/pastel green for active elements
+
+[markdown]
+text = "#E0F2EE"                # Muted off-white pastel text
+heading_1 = "#A1EAD4"           # Bright seafoam for main headers
+heading_2 = "#BCEFE0"           # Slightly softer mint for secondary headers
+code_bg = "#253335"             # Contoured background block for code snippets

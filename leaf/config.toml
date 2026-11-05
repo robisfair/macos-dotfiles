@@ -1,0 +1,4 @@
+# ~/.config/leaf/config.toml
+# theme = "./themes/ryuuko.toml"
+theme = "./themes/nord.toml"
+# theme = "./themes/gruvbox.toml"

@@ -1,0 +1,33 @@
+# Inherit basic behaviors from the default base theme
+base = "forest"
+
+# Use the base16 Gruvbox syntax highlighting for code blocks
+syntax = "base16-gruvbox.dark"
+
+[ui]
+# Core UI and panel background colors
+content_bg      = "#282828"  # Gruvbox dark0
+sidebar_bg      = "#1d2021"  # Gruvbox dark0_hard
+statusbar_bg    = "#3c3836"  # Gruvbox dark1
+
+# UI Accent colors
+toc_accent      = "#fe8019"  # Gruvbox orange
+selection_bg    = "#504945"  # Gruvbox dark2
+border_color    = "#665c54"  # Gruvbox dark3
+
+[markdown]
+# Main content text colors
+text            = "#ebdbb2"  # Gruvbox light4
+text_dim        = "#a89984"  # Gruvbox gray
+
+# Heading hierarchy 
+heading_1       = "#fabd2f"  # Gruvbox yellow
+heading_2       = "#8ec07c"  # Gruvbox aqua
+heading_3       = "#458588"  # Gruvbox blue
+heading_4       = "#b8bb26"  # Gruvbox green
+
+# Inline elements
+link            = "#83a598"  # Gruvbox light blue
+inline_code     = "#fb4934"  # Gruvbox red
+blockquote      = "#928374"  # Gruvbox gray accent
+

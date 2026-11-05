@@ -15,12 +15,15 @@ macos-option-as-alt = true
 # theme = Gruvbox Dark
 # theme = Arthur
 # theme = Ryuuko
+theme = Nord
+# theme = Onenord
 # theme = traffic
 # theme = Terafox
 # theme = Sundried
-theme = Seafoam Pastel
+# theme = Seafoam Pastel
 # theme = novmbr
 # theme = Catppuccin Frappe
+# theme = owl
 ########################
 window-padding-x = 5
 window-padding-y = 5

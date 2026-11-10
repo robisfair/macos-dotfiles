@@ -34,8 +34,10 @@ ctrl-w = 'close --quit-if-last-window'
 ctrl-cmd-b = "exec-and-forget open -n -a '/Applications/Google Chrome.app'"
 ctrl-enter = "exec-and-forget open -a /Applications/Ghostty.app"
 alt-shift-a = ["exec-and-forget open -a '/Applications/Claude.app'", 'workspace Claude']
-ctrl-f = 'exec-and-forget ~/.config/hyprspace/open-finder.sh'
+cmd-backtick = 'exec-and-forget ~/.config/hyprspace/open-finder.sh'
 ctrl-o = ["exec-and-forget open -a '/Applications/Obsidian.app'", 'workspace 4']
+# Ephemeral Firefox
+cmd-ctrl-t = 'exec-and-forget firetemp'
 
 # --- Chrome WebApps ---
 ctrl-alt-c = ["exec-and-forget open -a '/Users/robert/Applications/Chrome Apps.localized/Google Calendar.app'", "workspace 2"]
